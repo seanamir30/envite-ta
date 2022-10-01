@@ -25,6 +25,24 @@ const Event = () => {
       setPartyData(JSON.parse(data))
     }
   }, [])
+
+  const formatDate = (date?: string) => {
+    if(!date) return
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+    let raw = date?.split("-");
+
+    return(`${raw[2]} ${months[parseInt(raw[1])]}`)
+  }
+
+  const formatTime = (time?: string) => {
+    if(!time) return
+    let raw = time?.split(':')
+    let hours = ((parseInt(raw[0]) + 11) % 12 + 1)
+    var suffix = hours <= 12 ? "PM":"AM";
+
+    return `${hours}:${raw[1]} ${suffix}`
+  }
   
 
   return (
@@ -38,8 +56,8 @@ const Event = () => {
             <img src="images/Calendar.svg" alt="Calendar"/>
           </div>
           <div className="w-full">
-            <div className="font-bold text-primary-1">{partyData?.fromDate} {partyData?.fromTime}</div>
-            <div className="text-neutral-1">to <span className="font-bold">{partyData?.toDate} {partyData?.toTime}</span> UTC +10</div>
+            <div className="font-bold text-primary-1">{formatDate(partyData?.fromDate)} {formatTime(partyData?.fromTime)}</div>
+            <div className="text-neutral-1">to <span className="font-bold">{formatDate(partyData?.toDate)} {formatTime(partyData?.toTime)}</span> UTC +10</div>
           </div>
           <Link to="date/edit"><img src="/images/stroke.svg"/></Link>
         </div>
