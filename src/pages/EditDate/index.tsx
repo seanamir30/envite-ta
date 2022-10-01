@@ -12,6 +12,7 @@ const EditDate = () => {
 
   useEffect(() => {
     const data = localStorage.getItem('partyData')
+    if(data === null) navigate('/',{replace: true})
     if(typeof data === 'string'){
       const parsedData = JSON.parse(data)
       setPartyData(parsedData)

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export interface partyData {
   hostedBy: string,
@@ -15,9 +15,12 @@ export interface partyData {
 }
 
 const Event = () => {
+  const navigate = useNavigate()
   const [partyData,setPartyData] = useState<partyData>()
+
   useEffect(() => {
     const data = localStorage.getItem('partyData')
+    if(data === null) navigate('/',{replace: true})
     if(typeof data === 'string'){
       setPartyData(JSON.parse(data))
     }
