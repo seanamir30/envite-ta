@@ -3,7 +3,7 @@ import Landing from './pages/Landing';
 import Event from './pages/Event';
 import Create from './pages/Create';
 import EditDate from './pages/EditDate';
-import EditTime from './pages/EditTime';
+import EditLocation from './pages/EditLocation';
 import './App.css';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Route path="/event" element={<Event/>}/>
         <Route path="/create" element={<Create/>}/>
         <Route path="/event/date/edit" element={<EditDate/>}/>
-        <Route path="/event/location/edit" element={<EditTime/>}/>
+        <Route path="/event/location/edit" element={<EditLocation/>}/>
       </Routes>
     </div>
   );
